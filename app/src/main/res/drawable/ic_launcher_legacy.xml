@@ -1,0 +1,28 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    
+    <!-- Background -->
+    <path
+        android:fillColor="#667EEA"
+        android:pathData="M0,0 L48,0 L48,48 L0,48 Z"/>
+    
+    <!-- Gradient Effect -->
+    <path
+        android:fillColor="#764BA2"
+        android:pathData="M48,0 L48,48 L0,48 Z"
+        android:fillAlpha="0.3"/>
+    
+    <!-- Send Icon -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,24 L32,15 L12,6 L12,14 L27,16 L12,18 Z"/>
+    
+    <!-- WiFi Icon Small -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M34,18 L36,20 C38,18 40,18 42,20 L44,18 C41,15 37,15 34,18 Z"
+        android:fillAlpha="0.8"/>
+</vector>
