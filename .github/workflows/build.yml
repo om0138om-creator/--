@@ -13,10 +13,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up JDK 17
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
@@ -26,32 +26,35 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build with Gradle
-      run: ./gradlew assembleRelease
-
-    - name: Sign APK
-      uses: r0adkll/sign-android-release@v1
-      with:
-        releaseDirectory: app/build/outputs/apk/release
-        signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-        alias: ${{ secrets.ALIAS }}
-        keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-        keyPassword: ${{ secrets.KEY_PASSWORD }}
-      env:
-        BUILD_TOOLS_VERSION: "34.0.0"
+      run: ./gradlew assembleRelease --stacktrace
 
     - name: Upload APK
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ShareApp-Release
         path: app/build/outputs/apk/release/*.apk
+        if-no-files-found: error
 
     - name: Create Release
       if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       with:
         files: app/build/outputs/apk/release/*.apk
         tag_name: v1.0.${{ github.run_number }}
         name: Release v1.0.${{ github.run_number }}
+        body: |
+          ## ShareApp Pro v1.0.${{ github.run_number }}
+          
+          ### المميزات ✨
+          - 📤 مشاركة الملفات عبر البلوتوث
+          - 📡 مشاركة الملفات عبر WiFi Direct
+          - 🎨 تصميم عصري واحترافي
+          
+          ### التحميل
+          قم بتحميل ملف APK وتثبيته على هاتفك
+          
+          ---
+          تم التطوير بواسطة [عمر سنجق](https://t.me/Om9r0)
         draft: false
         prerelease: false
       env:
