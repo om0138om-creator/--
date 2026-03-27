@@ -1,11 +1,8 @@
-name: Android CI
+name: Build Android APK
 
 on:
   push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
-  workflow_dispatch:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -20,42 +17,18 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: gradle
+
+    - name: Generate Gradle Wrapper
+      run: gradle wrapper
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    - name: Build with Gradle
-      run: ./gradlew assembleRelease --stacktrace
+    - name: Build APK
+      run: ./gradlew assembleDebug
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: ShareApp-Release
-        path: app/build/outputs/apk/release/*.apk
-        if-no-files-found: error
-
-    - name: Create Release
-      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-      uses: softprops/action-gh-release@v2
-      with:
-        files: app/build/outputs/apk/release/*.apk
-        tag_name: v1.0.${{ github.run_number }}
-        name: Release v1.0.${{ github.run_number }}
-        body: |
-          ## ShareApp Pro v1.0.${{ github.run_number }}
-          
-          ### المميزات ✨
-          - 📤 مشاركة الملفات عبر البلوتوث
-          - 📡 مشاركة الملفات عبر WiFi Direct
-          - 🎨 تصميم عصري واحترافي
-          
-          ### التحميل
-          قم بتحميل ملف APK وتثبيته على هاتفك
-          
-          ---
-          تم التطوير بواسطة [عمر سنجق](https://t.me/Om9r0)
-        draft: false
-        prerelease: false
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        name: ShareApp-APK
+        path: app/build/outputs/apk/debug/app-debug.apk
