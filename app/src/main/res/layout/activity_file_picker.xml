@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
+        app:title="@string/select_files"
+        app:titleTextColor="@color/white"/>
+
+    <!-- File Categories -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/allFilesButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all_files"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:cornerRadius="20dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/imagesButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/images"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:cornerRadius="20dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/videosButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/videos"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:cornerRadius="20dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/appsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/apps"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:cornerRadius="20dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/documentsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/documents"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:cornerRadius="20dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/musicButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/music"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:cornerRadius="20dp"/>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!-- Files RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/filesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"/>
+
+    <!-- Selection Info & Done Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@color/card_background"
+        android:elevation="4dp">
+
+        <TextView
+            android:id="@+id/selectedCountText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0 ملفات محددة"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:gravity="center_vertical"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/doneButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تم"
+            app:cornerRadius="20dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
