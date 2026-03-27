@@ -1,0 +1,37 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <group
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:translateX="21.6"
+        android:translateY="21.6">
+        
+        <!-- Background Circle -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M54,54m-45,0a45,45 0,1 1,90 0a45,45 0,1 1,-90 0"
+            android:fillAlpha="0.3"/>
+        
+        <!-- Send Icon -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M28,54L58,39.5L28,25L28,35.5L50.5,38.5L28,41.5L28,54Z"
+            android:translateX="0"
+            android:translateY="0"/>
+        
+        <!-- WiFi Signal Lines -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M65,45L67,47C69,-2 -2 73,47L71,49L69,51C67,49 63,49 61,51L65,45Z"
+            android:fillAlpha="0.7"/>
+        
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M63,49L65,51C66,-1 -1 67,51L69,53L67,55C66,54 64,54 63,55L63,49Z"
+            android:fillAlpha="0.9"/>
+    </group>
+</vector>
